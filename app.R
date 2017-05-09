@@ -14,17 +14,13 @@ library(png)
 library(gridExtra)
 library(shinythemes)
 
-package_check <- require("reshape")
+package_check <- require("reshape2")
 if (package_check == FALSE) {
-  install.packages('reshape')
+  install.packages('reshape2')
 }
-library("reshape")  
+library("reshape2")  
 
-package_check <- require("RColorBrewer")
-if (package_check == FALSE) {
-  install.packages('RColorBrewer')
-}
-library("RColorBrewer")  
+ 
 
 package_check <- require("plotly")
 if (package_check == FALSE) {
