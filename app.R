@@ -20,6 +20,11 @@ if (package_check == FALSE) {
 }
 library("reshape2")  
 
+package_check <- require("RColorBrewer")
+if (package_check == FALSE) {
+  install.packages('RColorBrewer"')
+}
+library("RColorBrewer") 
  
 
 package_check <- require("plotly")
