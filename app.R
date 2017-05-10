@@ -9,10 +9,33 @@
 
 library(shiny)
 library(ggplot2)
-library(grid)
-library(png)
-library(gridExtra)
-library(shinythemes)
+
+
+
+package_check <- require("grid")
+if (package_check == FALSE) {
+  install.packages('grid')
+}
+library("grid") 
+
+package_check <- require("png")
+if (package_check == FALSE) {
+  install.packages('png')
+}
+library("png") 
+
+
+package_check <- require("gridExtra")
+if (package_check == FALSE) {
+  install.packages('gridExtra')
+}
+library("gridExtra") 
+
+package_check <- require("shinythemes")
+if (package_check == FALSE) {
+  install.packages('shinythemes')
+}
+library("shinythemes")  
 
 package_check <- require("reshape2")
 if (package_check == FALSE) {
