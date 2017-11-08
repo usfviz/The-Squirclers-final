@@ -155,7 +155,20 @@ pitch_melt_l2 <- pitch_melt2[pitch_melt2$Bat_side == 'L',]
 
 
 ##########################################################
-                                       apply_regiony <- function(x){
+#  DATA MANIPULATION FOR HEAT MAP                        #		                            
+##########################################################
+  
+pitch_data2$X_Region <- 2		
+pitch_data2$X_Region <- pitch_data2$plate_x		
+pitch_data2$Y_Region <- 2		
+pitch_data2$Y_Region <- pitch_data2$plate_z		
+  	
+apply_regionx <- function(x){		
+    ifelse(x < -1.5, 1, ifelse(x < -1.0, 2, ifelse(x < -0.5, 3,	ifelse(x < 0.0, 4,
+                                                                       ifelse(x < 0.5, 5,ifelse(x< 1.0, 6,
+                                                                                                ifelse(x< 1.5, 7, 8)))))))		
+   }
+apply_regiony <- function(x){
   ifelse(x > 4, 1, ifelse(x > 3.5, 2, ifelse(x > 3.0, 3,
                                             ifelse(x > 2.5, 4, ifelse(x >2.0, 5,
                                                                        ifelse(x> 1.5, 6,
@@ -178,8 +191,8 @@ g_legend <- function(a.gplot){
 }
 
 
-ellipseDescript <- HTML("<br><u>PLOT EXPLANATION</u><br>Hyper gradient boosting was used to determine the decision boundary between a Strike and a Ball using 2015 & 2016 pitch data. The figure on the left compares empirical <u>superelliptical</u> strike zones to the strike zone as defined by the Major-League Baseball rule book.<br><br><u>KEY DISCOVERY #1</u><br>The right hand-batter strike zone is in general larger than the left hand-batter strike zone which runs counter to previous investigations of the strike zone.<br><br><u>KEY DISCOVERY #2</u><br>The strikezone expands with each ball and contracts with each strike.  View 0-2, 0-0 and 3-0 to see progression.")
-rectDescript <- HTML("<br><u>PLOT EXPLANATION</u><br>Hyper gradient boosting was used to determine the decision boundary between a Strike and a Ball using 2015 & 2016 pitch data. The figure on the left compares empirical <u>rectangular</u> strike zones to the strike zone as defined by the Major-League Baseball rule book.<br><br><u>KEY DISCOVERY #1</u><br>The right hand-batter strike zone is in general larger than the left hand-batter strike zone which runs counter to previous investigations of the strike zone.<br><br><u>KEY DISCOVERY #2</u><br>The strikezone expands with each ball and contracts with each strike.  View 0-2, 0-0 and 3-0 to see progression.")
+ellipseDescript <- HTML("<br><u>PLOT EXPLANATION</u><br>Hyper gradient boosting was used to determine the decision boundary between a Strike and a Ball using 2015 & 2016 pitch data. The figure on the left compares empirical <u>superelliptical</u> strike zones to the strike zone as defined by the Major-League Baseball rule book.<br><br><u>KEY DISCOVERY #1</u><br>The right hand-batter strike zone is in general larger than the left hand-batter strike zone.<br><br><u>KEY DISCOVERY #2</u><br>The strikezone expands with each ball and contracts with each strike. Strike contraction is generally larger than ball expansion.  View 0-2, 0-0 and 3-0 to see progression.")
+rectDescript <- HTML("<br><u>PLOT EXPLANATION</u><br>Hyper gradient boosting was used to determine the decision boundary between a Strike and a Ball using 2015 & 2016 pitch data. The figure on the left compares empirical <u>rectangular</u> strike zones to the strike zone as defined by the Major-League Baseball rule book.<br><br><u>KEY DISCOVERY #1</u><br>The right hand-batter strike zone is in general larger than the left hand-batter strike zone.<br><br><u>KEY DISCOVERY #2</u><br>The strikezone expands with each ball and contracts with each strike.  Strike contraction is generally larger than ball expansion. View 0-2, 0-0 and 3-0 to see progression.")
 SZDescript <- HTML("<br><u>PLOT EXPLANATION</u><br>Closeups of the rectangle and superellipse strike zones are shown for selectable stances and strike zones.  Random samples of 10,000 pitches for each stance/count are included with the empirical strike zones. Called balls shown in red.  Called strikes shown in blue")
 heatmapDescript <- HTML("<br><u>PLOT EXPLANATION</u><br>Heatmap showing total pitch count for different stances/counts. Grid is divided into equally spaced 6x6 inch square regions. Interesting counts to view are 0-2 and 3-0. Note the extreme differences in the pitch locations. ")
 
