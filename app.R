@@ -155,24 +155,7 @@ pitch_melt_l2 <- pitch_melt2[pitch_melt2$Bat_side == 'L',]
 
 
 ##########################################################
-#  DATA MANIPULATION FOR HEAT MAP                        #
-##########################################################
-
-
-
-pitch_data2$X_Region <- 2
-pitch_data2$X_Region <- pitch_data2$plate_x
-pitch_data2$Y_Region <- 2
-pitch_data2$Y_Region <- pitch_data2$plate_z
-
-apply_regionx <- function(x){
-  ifelse(x < -1.5, 1, ifelse(x < -1.0, 2, ifelse(x < -0.5, 3,
-                                                 ifelse(x < 0.0, 4, ifelse(x < 0.5, 5,
-                                                                           ifelse(x< 1.0, 6,
-                                                                                  ifelse(x< 1.5, 7, 8)))))))
-}
-
-apply_regiony <- function(x){
+                                       apply_regiony <- function(x){
   ifelse(x > 4, 1, ifelse(x > 3.5, 2, ifelse(x > 3.0, 3,
                                             ifelse(x > 2.5, 4, ifelse(x >2.0, 5,
                                                                        ifelse(x> 1.5, 6,
